@@ -6,10 +6,11 @@ module.exports.index = (request, response) => {
 }
     // The method below is new
 module.exports.createProduct = (request, response) => {
-    const { title, price } = request.body;
+    const { title, price, description } = request.body;
     Product.create({
         title,
-        price
+        price,
+        description
     })
         .then(product => response.json(person))
         .catch(err => response.json(err));
