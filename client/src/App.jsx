@@ -7,7 +7,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route path="/products/" render={ (routeProps) => <Main {...routeProps} />}/>
-        <Route path="products/:id" render={ (routeProps => <Detail {...routeProps} />} />
+        <Route path="products/:id" render={ (routeProps) => <Detail {...routeProps} />} />
+        <Route path="products/:id/edit" render={ (routeProps) => <Update {...routeProps} updateProduct={updateProduct} />}/>
       </BrowserRouter>
     </div>
   );

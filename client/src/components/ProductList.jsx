@@ -1,17 +1,28 @@
-import React from 'react'
-
- const ProductList = (props) => {
+import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+export default props => {
+    const { removeFromDom } = props;
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/api/products/' + personId)
+            .then(res => {
+                removeFromDom(productId)
+            })
+    }
     return (
         <div>
-      {props.products.map(product => (
-        <div key={product._id}>
-          <h3>{product.title}</h3>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
+            {props.people.map((product, idx) => {
+                return <p key={idx}>
+                    <Link to={"/people/" + product._id}>
+                        {product.title}, {product.price}, {product.description}
+                    </Link>
+                    |
+                    <button onClick={(e)=>{deleteProduct(product._id)}}>
+                        Delete
+                    </button>
+                </p>
+            })}
         </div>
-      ))}
-    </div>
     )
 }
 
-export default ProductList
